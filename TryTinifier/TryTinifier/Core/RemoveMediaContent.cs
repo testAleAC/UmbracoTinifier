@@ -1,5 +1,8 @@
 ﻿using Quartz;
 using Quartz.Impl;
+using System;
+using System.IO;
+using System.Web;
 
 namespace TryTinifier.Core
 {
@@ -18,9 +21,9 @@ namespace TryTinifier.Core
 
             ITrigger trigger = TriggerBuilder.Create()
                 .WithIdentity("trigger1", "group1")
-                .StartNow()
                 .WithSimpleSchedule(x => x.WithIntervalInHours(24).RepeatForever())
-                //.StartAt(DateTimeOffset.Parse("01:00:00 AM"))
+                .StartAt(DateTimeOffset.Parse("02:00 AM"))
+                //.StartNow()
                 //.WithSimpleSchedule(x => x.WithIntervalInSeconds(15).RepeatForever())
                 .Build();
 
@@ -33,12 +36,18 @@ namespace TryTinifier.Core
 
         void IJob.Execute(IJobExecutionContext context)
         {
-            DeleteContentMediaFolder();
+            //DeleteContentMediaFolder();
         }
 
         private void DeleteContentMediaFolder()
         {
+            string pathToMediaFolder = Path.Combine(HttpRuntime.AppDomainAppPath, "media");
+            var di = new DirectoryInfo(pathToMediaFolder);
 
+            foreach (var dir in di.EnumerateDirectories())
+            {
+                dir.Delete(true);
+            }
         }
     }
 }

@@ -37,10 +37,13 @@ namespace TryTinifier.Core
             foreach (var mediaItem in e.SavedEntities)
             {
                 var size = mediaItem.Properties["umbracoBytes"].Value.ToString();
-                var x = ((float.Parse(size) / 1024f) / 1024f);
-                if (x > 1)
+                if (!string.IsNullOrEmpty(size))
                 {
-                    e.CancelOperation(new EventMessage("Stop", "Maximum image size is 1MB!", EventMessageType.Error));
+                    var x = ((float.Parse(size) / 1024f) / 1024f);
+                    if (x > 1)
+                    {
+                        e.CancelOperation(new EventMessage("Stop", "Maximum image size is 1MB!", EventMessageType.Error));
+                    }
                 }
             }
         }
@@ -48,7 +51,6 @@ namespace TryTinifier.Core
         private float GetMediaFolderSize()
         {
             var pathToMediaFolder = System.Web.HttpContext.Current.Server.MapPath(@"~/media");
-            var foldersCount = Directory.GetFiles(pathToMediaFolder, "*", SearchOption.AllDirectories).Count();
             float sizeOfMediaFolder = Directory.GetFiles(pathToMediaFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length)) / (1024f * 1024f);
             return sizeOfMediaFolder;
         }

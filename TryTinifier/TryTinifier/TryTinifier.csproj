@@ -484,8 +484,6 @@
     <Content Include="js\youtube-player\youTubeEmbed-jquery.js" />
     <Content Include="js\yt-player\jquery.mb.YTPlayer.js" />
     <Content Include="js\yt-player\setting.js" />
-    <Content Include="Media\1039\test-photo.png" />
-    <Content Include="Media\1039\test-photo_thumb.png" />
     <Content Include="skins\default.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
