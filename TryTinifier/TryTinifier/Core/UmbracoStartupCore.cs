@@ -24,26 +24,27 @@ namespace TryTinifier.Core
 
         private void MediaService_Saving(IMediaService sender, SaveEventArgs<IMedia> e)
         {
-            CheckImageSize(e);
-            if (GetMediaFolderSize() > 100)
+            var checkContentType = e.SavedEntities.FirstOrDefault(x => x.ContentType.Alias == "Image");
+            if (checkContentType != null)
             {
-                e.CancelOperation(new EventMessage("Stop", "Image limit exceeded! Maximum size of media content is 100MB. Please delete content!", EventMessageType.Error));
+                CheckImageSize(e);
+                if (GetMediaFolderSize() > 100)
+                {
+                    e.CancelOperation(new EventMessage("Stop", "Image limit exceeded! Maximum size of media content is 100MB. Please delete content!", EventMessageType.Error));
+                }
             }
-
         }
 
         private void CheckImageSize(SaveEventArgs<IMedia> e)
         {
             foreach (var mediaItem in e.SavedEntities)
             {
-                var size = mediaItem.Properties["umbracoBytes"].Value.ToString();
-                if (!string.IsNullOrEmpty(size))
+
+            var size = mediaItem.Properties["umbracoBytes"].Value.ToString();
+                var x = ((float.Parse(size) / 1024f) / 1024f);
+                if (x > 10)
                 {
-                    var x = ((float.Parse(size) / 1024f) / 1024f);
-                    if (x > 1)
-                    {
-                        e.CancelOperation(new EventMessage("Stop", "Maximum image size is 1MB!", EventMessageType.Error));
-                    }
+                    e.CancelOperation(new EventMessage("Stop", "Maximum image size is 10MB!", EventMessageType.Error));
                 }
             }
         }

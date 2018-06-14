@@ -36,7 +36,7 @@ namespace TryTinifier.Core
 
         void IJob.Execute(IJobExecutionContext context)
         {
-            //DeleteContentMediaFolder();
+            DeleteContentMediaFolder();
         }
 
         private void DeleteContentMediaFolder()
