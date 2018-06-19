@@ -236,9 +236,6 @@
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.11.0\lib\net45\TidyNet.dll</HintPath>
     </Reference>
-    <Reference Include="Tinifier.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Tinifier.1.4.3\lib\net452\Tinifier.Core.dll</HintPath>
-    </Reference>
     <Reference Include="umbraco, Version=1.0.6743.18599, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.11.0\lib\net45\umbraco.dll</HintPath>
     </Reference>
@@ -277,23 +274,6 @@
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
-    <Content Include="App_Plugins\Tinifier\BackOffice\Dashboards\TinifierSettings.html" />
-    <Content Include="App_Plugins\Tinifier\BackOffice\Dashboards\TinifierStatistic.html" />
-    <Content Include="App_Plugins\Tinifier\BackOffice\timages\TinifierEdit.html" />
-    <Content Include="App_Plugins\Tinifier\BackOffice\timages\TinifierTinifyDialog.html" />
-    <Content Include="App_Plugins\Tinifier\Controllers\TinifierDisplayStatistic.controller.js" />
-    <Content Include="App_Plugins\Tinifier\Controllers\TinifierEditTimage.controller.js" />
-    <Content Include="App_Plugins\Tinifier\Controllers\TinifierEditTSetting.controller.js" />
-    <Content Include="App_Plugins\Tinifier\Controllers\TinyTImage.controller.js" />
-    <Content Include="App_Plugins\Tinifier\css\TinifierStyle.css" />
-    <Content Include="App_Plugins\Tinifier\Lang\en-GB.xml" />
-    <Content Include="App_Plugins\Tinifier\Lang\en-US.xml" />
-    <Content Include="App_Plugins\Tinifier\media\fat.jpg" />
-    <Content Include="App_Plugins\Tinifier\media\photo.jpg" />
-    <Content Include="App_Plugins\Tinifier\media\runPanda.jpg" />
-    <Content Include="App_Plugins\Tinifier\media\sleeping_panda_by_citruspop-d2v8hdd.jpg" />
-    <Content Include="App_Plugins\Tinifier\media\spinner.gif" />
-    <Content Include="App_Plugins\Tinifier\media\support.jpg" />
     <Content Include="App_Plugins\uSync\uSyncDashboard.css" />
     <Content Include="App_Plugins\uSync\uSyncDashboard.html" />
     <Content Include="App_Plugins\uSync\uSyncDashboardController.js" />
@@ -526,7 +506,6 @@
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.eot" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.woff" />
-    <Content Include="App_Plugins\Tinifier\package.manifest" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="config\umbracoSettings.config" />
     <Content Include="config\tinyMceConfig.config" />
