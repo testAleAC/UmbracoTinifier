@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Web;
 using Umbraco.Core;
 using Umbraco.Core.Events;
 using Umbraco.Core.Models;
@@ -28,9 +29,9 @@ namespace TryTinifier.Core
             if (checkContentType != null)
             {
                 CheckImageSize(e);
-                if (GetMediaFolderSize() > 100)
+                if (GetMediaFolderSize() > 1000)
                 {
-                    e.CancelOperation(new EventMessage("Stop", "Image limit exceeded! Maximum size of media content is 100MB. Please delete content!", EventMessageType.Error));
+                    e.CancelOperation(new EventMessage("Stop", "Image limit exceeded! Maximum size of media content is 1GB. Please delete content!", EventMessageType.Error));
                 }
             }
         }
@@ -51,7 +52,7 @@ namespace TryTinifier.Core
 
         private float GetMediaFolderSize()
         {
-            var pathToMediaFolder = System.Web.HttpContext.Current.Server.MapPath(@"~/media");
+            string pathToMediaFolder = Path.Combine(HttpRuntime.AppDomainAppPath, "media");
             float sizeOfMediaFolder = Directory.GetFiles(pathToMediaFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length)) / (1024f * 1024f);
             return sizeOfMediaFolder;
         }
